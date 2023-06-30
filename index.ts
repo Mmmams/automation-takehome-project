@@ -35,7 +35,7 @@ export async function search(config: ISearchOn): Promise<IItem[]> {
                     searchTerm: config.searchTerm,
                     product: titleElement?.textContent || '',
                     price: priceElement?.textContent || '',
-                    link: `${config.searchTerm}${linkElement?.getAttribute('href')}` || ''
+                    link: `${config.url}${linkElement?.getAttribute('href')}` || ''
                 })
             }
         })
@@ -59,6 +59,10 @@ export function getFileName(): string {
 
 export async function writeCSV(data: IItem[], pathToFolder?: string) {
     const path: string = pathToFolder || './csv/'
+    const isFolderExist = fs.existsSync(`${path}`)
+    if (!isFolderExist) {
+        fs.mkdirSync(path)
+    }
     const fileName = getFileName()
     const isFileExist = fs.existsSync(`${path}${fileName}`)
     if (!isFileExist) {
