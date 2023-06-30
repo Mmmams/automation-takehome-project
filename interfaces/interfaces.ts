@@ -26,4 +26,4 @@ export const csvHeader = [
     {id: 'product', title: 'Product'},
     {id: 'price', title: 'Price'},
     {id: 'link', title: 'Link'},
-];
+]

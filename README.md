@@ -1,25 +1,19 @@
 # automation-takehome-project
 
-Project for candidates to complete as a hiring assessment.
+## Instructions and prepositions 
 
-## Instructions
+Node.js version - 18.16.1
+Npm version - 9.5.1
+## Folder structure
 
-1. Fork repo to your own project.
-2. Send link to the forked repo by the provided due date.
+1. Config folder - contains searching config
+2. Interfaces folder - contains models and shapes of data for searching, and data receiving
+3. Test folder - contains testing files and test data files
+4. index.ts file contains the main logic of the application
 
-## Project Requirements
 
-The objective is to build an automation application, meaning a program that performs a manual workflow in a repeatable manner. It must meet the following requirements:
+### Commands
 
-1. Use Node.js, Typescript, and the [Playwright](https://playwright.dev/) library. **IMPORTANT: Playwright should be used to facilitate the web automation, not for testing purposes.**
-2. Navigate to https://amazon.com
-3. Finds the three lowest prices for any given search term
-4. Write these products' to a CSV locally where each row contains product, price, search term, and link to the product's page.
-5. The design should be generalized enough so that the framework can be applied to another e-commerce site with relative ease and minimal re-work.
-6. Should utilize Typescript features where helpful.
-7. Should run successfully during the review session.
-8. Focus on maintainability and scalability.
-
-### Extra Credit
-
-1. Introduce a set of tests around the project
+1. npm run search - running searching using provided config in index.js
+2. npm run test - running tests in the console
+3. npm run test:ui - running tests using UI
