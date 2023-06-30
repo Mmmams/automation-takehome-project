@@ -1,11 +1,8 @@
-import {Browser, chromium, Page} from '@playwright/test'
-import {IItem, ISearchOn} from "./interfaces/interfaces";
-import {searchOnAmazonConfig} from "./config";
+import {expect, test} from '@playwright/test';
+import {IItem} from "../interfaces/interfaces";
+import {searchOnAmazonConfig as config} from "../config";
 
-async function searchOn(config: ISearchOn): Promise<IItem[]> {
-    const browser: Browser = await chromium.launch();
-    const context = await browser.newContext();
-    const page: Page = await context.newPage();
+test('main', async ({page}) => {
     await page.goto(config.url);
     await page.fill(config.searchInputSelector, config.searchTerm);
     await page.click(config.searchButtonSelector);
@@ -13,7 +10,7 @@ async function searchOn(config: ISearchOn): Promise<IItem[]> {
     await page.click(config.dropdownSelector);
     await page.click(config.filterBySelector)
     await page.waitForSelector(config.listOfItemsSelector)
-
+    
     const results: IItem[] = await page.$$eval(
         config.listOfItemsSelector,
         (items: Element[]) => {
@@ -35,14 +32,6 @@ async function searchOn(config: ISearchOn): Promise<IItem[]> {
         }
     );
 
-    await browser.close();
-    return results;
-}
-
-searchOn(searchOnAmazonConfig)
-    .then((results) => {
-        console.log(results);
-    })
-    .catch((error) => {
-        console.error('Error occurred:', error);
-    });
+    console.log(results)
+    await expect(results).toHaveLength(3)
+});
