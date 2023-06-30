@@ -16,7 +16,14 @@ export interface ISearchOn {
 
 export interface IItem {
     searchTerm: string,
-    title: string,
+    product: string,
     price: string,
     link: string
 }
+
+export const csvHeader = [
+    {id: 'searchTerm', title: 'Search Term'},
+    {id: 'product', title: 'Product'},
+    {id: 'price', title: 'Price'},
+    {id: 'link', title: 'Link'},
+];
