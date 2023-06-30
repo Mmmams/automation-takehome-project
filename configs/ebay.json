@@ -1,0 +1,15 @@
+{
+  "searchTerm": "iphone",
+  "numberOfItems": 5,
+  "url": "https://www.ebay.com/",
+  "searchInputSelector": "#gh-ac",
+  "searchButtonSelector": "#gh-btn",
+  "dropdownSelector": "#gh-cat",
+  "filterBySelector": ".srp-controls__control.srp-controls__count",
+  "listOfItemsSelector": ".s-item",
+  "valuesSelector": {
+    "title": ".s-item__title",
+    "link": ".s-item__link",
+    "price": ".s-item__price"
+  }
+}

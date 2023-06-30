@@ -5,6 +5,7 @@ import {expect, test} from '@playwright/test'
 
 import {getFileName, search, writeCSV} from "../index"
 import amazonConfig from "../configs/amazon.json"
+import ebayConfig from "../configs/ebay.json"
 
 
 test('Search on Amazon: length of items is correct', async () => {
@@ -12,7 +13,7 @@ test('Search on Amazon: length of items is correct', async () => {
     expect(result.length).toBe(amazonConfig.numberOfItems)
 })
 
-test('Search on Amazon', async () => {
+test('Search on Amazon: files has not null attributes', async () => {
     const result = await search(amazonConfig)
 
     for (const item of result) {
@@ -27,7 +28,21 @@ test('Search on Amazon', async () => {
     }
 })
 
-test('Get name', async () => {
+test('Search on Ebay', async () => {
+    const result = await search(ebayConfig)
+
+    for (const item of result) {
+        expect(item).toHaveProperty('searchTerm')
+        expect(item).toHaveProperty('product')
+        expect(item).toHaveProperty('price')
+        expect(item).toHaveProperty('link')
+        expect(item.searchTerm).not.toBeNull()
+        expect(item.product).not.toBeNull()
+        expect(item.price).not.toBeNull()
+        expect(item.link).not.toBeNull()
+    }
+})
+test('Get file name', async () => {
     const name: string = await getFileName()
     const currentDate: Date = new Date()
     const year: number = currentDate.getFullYear()

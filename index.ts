@@ -6,7 +6,6 @@ import {createObjectCsvWriter} from 'csv-writer'
 import {csvHeader, IItem, ISearchOn} from "./interfaces/interfaces"
 import amazonConfig from "./configs/amazon.json"
 
-
 export async function search(config: ISearchOn): Promise<IItem[]> {
     const browser: Browser = await chromium.launch()
     const context: BrowserContext = await browser.newContext()
